@@ -32,24 +32,27 @@ var maximaleTemperatuur = perfectePlantSituatie[1] + 3
 
 // Functies voor meldingen aanroepen
 function meldingGrondvocht() {
-    if ((grondvocht >= minimaleGrondvocht) && (grondvocht <= maximaleGrondvocht)) {
-    } else if ((grondvocht <= minimaleGrondvocht) && (grondvocht <= maximaleGrondvocht)) {
+    if (grondvocht >= minimaleGrondvocht && grondvocht <= maximaleGrondvocht) {
+    } else if (grondvocht <= minimaleGrondvocht && grondvocht <= maximaleGrondvocht) {
         console.log("Je plant is aan het uitdrogen!")
-    } else if ((grondvocht >= minimaleGrondvocht) && (grondvocht >= maximaleGrondvocht)) {
+    } else if (grondvocht >= minimaleGrondvocht && grondvocht >= maximaleGrondvocht) {
         console.log("Je plant is te nat!")
     } else console.log("Voeg een plant toe")
     }
-meldingGrondvocht();
-
 
 function meldingTemperatuur() {
-    if ((temperatuur >= minimaleTemperatuur) && (temperatuur <= maximaleTemperatuur)) {
-    } else if ((temperatuur <= minimaleTemperatuur) && (temperatuur <= maximaleTemperatuur)) {
+    if (temperatuur >= minimaleTemperatuur && temperatuur <= maximaleTemperatuur) {
+    } else if (temperatuur <= minimaleTemperatuur && temperatuur <= maximaleTemperatuur) {
         console.log("Je plant bevriest zo wat!")
-    } else if ((temperatuur >= minimaleTemperatuur) && (temperatuur >= maximaleTemperatuur)) {
+    } else if (temperatuur >= minimaleTemperatuur && temperatuur >= maximaleTemperatuur) {
         console.log("Het is veeel te warm voor je plant!")
     } else console.log("Voeg een plant toe")
     }
-meldingTemperatuur();
 
+function meldingen() {
+    meldingGrondvocht()
+    meldingTemperatuur()
+    }
+
+meldingen();
 
