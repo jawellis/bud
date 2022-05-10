@@ -1,50 +1,62 @@
 // AI plant voorspelling
-var plantvoorspelling= "aloeVera"
+let plantvoorspelling= "monstera"
 
-// plant info array 
-var perfectePlantSituatie = [60, 23]
-
-// Grondvocht data
+// sensor metingen
 // sensor grondvocht meting
-var grondvocht = 15
-// minimale/maximale grondvocht waardes
-var minimaleGrondvocht = perfectePlantSituatie[0] - 3
-var maximaleGrondvocht = perfectePlantSituatie[0] + 3
-
+let grondvochtSensor = 70
 // Temperatuur data
-// sensor temperatuur meting
-var temperatuur  = 30
+let temperatuurSensor  = 30
+// plant info array 
+let perfectePlantSituatie = []
 // minimale/maximale grondvocht waardes
-var minimaleTemperatuur = perfectePlantSituatie[1] - 3
-var maximaleTemperatuur = perfectePlantSituatie[1] + 3
+let minimaleGrondvocht = perfectePlantSituatie[0] - 3
+let maximaleGrondvocht = perfectePlantSituatie[0] + 3
+// minimale/maximale grondvocht waardes
+let minimaletemperatuur = perfectePlantSituatie[1] - 3
+let maximaletemperatuur = perfectePlantSituatie[1] + 3
 
 
 // // papa parse
-// function loadData() {
-//     Papa.parse('./plantdata.csv', {
-//         download: true,
-//         header: true,
-//         dynamicTyping: true,
-//         complete: results => fetchPlantdata(results.data)
-//     })
-// }
+function loadData() {
+     Papa.parse('./plantdata.csv', {
+        download: true,
+        header: true,
+        dynamicTyping: true,
+        complete: results => logResults(results.data)
+    })
+}
+
+function logResults(data){
+
+    for(let plant of data){
+        if(plant.plantNaam === plantvoorspelling){
+           
+            perfectePlantSituatie = [plant.grondvocht, plant.temperatuur]
+
+            console.log(plant.grondvocht)
+            console.log(plant.temperatuur)
+            console.log(perfectePlantSituatie)
+        }
+    }
+}
+
 
 
 // Functies voor meldingen aanroepen
 function meldingGrondvocht() {
-    if (grondvocht >= minimaleGrondvocht && grondvocht <= maximaleGrondvocht) {
-    } else if (grondvocht <= minimaleGrondvocht && grondvocht <= maximaleGrondvocht) {
+    if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
+    } else if (grondvochtSensor <= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
         console.log("Je plant is aan het uitdrogen!")
-    } else if (grondvocht >= minimaleGrondvocht && grondvocht >= maximaleGrondvocht) {
+    } else if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor >= maximaleGrondvocht) {
         console.log("Je plant is te nat!")
     } else console.log("Voeg een plant toe")
     }
 
 function meldingTemperatuur() {
-    if (temperatuur >= minimaleTemperatuur && temperatuur <= maximaleTemperatuur) {
-    } else if (temperatuur <= minimaleTemperatuur && temperatuur <= maximaleTemperatuur) {
+    if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
+    } else if (temperatuurSensor <= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
         console.log("Je plant bevriest zo wat!")
-    } else if (temperatuur >= minimaleTemperatuur && temperatuur >= maximaleTemperatuur) {
+    } else if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor >= maximaletemperatuur) {
         console.log("Het is veeel te warm voor je plant!")
     } else console.log("Voeg een plant toe")
     }
@@ -54,5 +66,8 @@ function meldingen() {
     meldingTemperatuur()
     }
 
+
+    
 meldingen();
+loadData();
 
