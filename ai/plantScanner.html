@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+  
+  <script src="https://unpkg.com/ml5@0.5.0/dist/ml5.min.js"></script>
+  <script src="/plantScanner.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <meta charset="utf-8" />
+
+</head>
+
+<body>
+    <header>
+    <h1> Plant Tool </h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href=""> sensor 1 </a></li>
+        <li><a href=""> sensor 2 </a></li>
+        <li><a href=""> sensor 3 </a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="sensor-output">
+        <div id="text"></div>
+        <h3> 
+            Sensor 1: Aloë Vera 
+        </h3>
+        <p> Your plant could use some more water!</p>
+        <p> It's a little to warm for your plant at the moment. You might want to move it to the shadows a bit.</p>
+    </section>
+
+    <button class="camera">Camera</button>
+</main>
+</body>
+
+</html>
