@@ -1,5 +1,9 @@
 // AI plant voorspelling
-let plantvoorspelling = "aloeVera"
+let plantvoorspelling = window.localStorage.getItem("plant")
+console.log(plantvoorspelling)
+document.querySelector("#naam").innerHTML = plantvoorspelling
+
+let vocht = document.getElementById("vocht")
 
 // sensor metingen
 // sensor grondvocht meting
@@ -51,7 +55,6 @@ function searchPlant(data) {
         console.log("meldingen :")
         meldingen()
     }
-
 }
 
 
@@ -60,19 +63,19 @@ function searchPlant(data) {
 function meldingGrondvocht() {
     if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
     } else if (grondvochtSensor <= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
-        console.log("Je plant is aan het uitdrogen!")
+        document.getElementById("vocht").innerHTML = "Je plant is aan het uitdrogen!";
     } else if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor >= maximaleGrondvocht) {
-        console.log("Je plant is te nat!")
-    } else console.log("Voeg een plant toe")
+        document.getElementById("vocht").innerHTML = "Je plant is te nat!";
+    } else document.getElementById("vocht").innerHTML = "Voeg een plant toe";
 }
 
 function meldingTemperatuur() {
     if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
     } else if (temperatuurSensor <= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
-        console.log("Je plant bevriest zo wat!")
+        document.getElementById("temp").innerHTML = "Je plant bevriest zo wat!";
     } else if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor >= maximaletemperatuur) {
-        console.log("Het is veeel te warm voor je plant!")
-    } else console.log("Voeg een plant toe")
+        document.getElementById("temp").innerHTML = "Het is veeel te warm voor je plant!";
+    } else document.getElementById("temp").innerHTML = "Voeg een plant toe";
 }
 
 function meldingen() {
