@@ -1,9 +1,5 @@
-// AI plant voorspelling
 let plantvoorspelling = window.localStorage.getItem("plant")
 console.log(plantvoorspelling)
-document.querySelector("#naam").innerHTML = plantvoorspelling
-
-let vocht = document.getElementById("vocht")
 
 // sensor metingen
 // sensor grondvocht meting
@@ -30,6 +26,7 @@ function loadData() {
     })
 }
 
+// compare fetched sensor data with plant data
 function searchPlant(data) {
 
     perfectePlantSituatie = []
@@ -49,40 +46,64 @@ function searchPlant(data) {
         }
     }
 
+    // checks if plant is in CSV
     if (perfectePlantSituatie.length == 0) {
         console.log("plant niet gevonden in CSV")
+
     } else {
         console.log("meldingen :")
         meldingen()
     }
 }
 
-
-
-// Functies voor meldingen aanroepen
-function meldingGrondvocht() {
-    if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
-    } else if (grondvochtSensor <= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
-        document.getElementById("vocht").innerHTML = "Je plant is aan het uitdrogen!";
-    } else if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor >= maximaleGrondvocht) {
-        document.getElementById("vocht").innerHTML = "Je plant is te nat!";
-    } else document.getElementById("vocht").innerHTML = "Voeg een plant toe";
+// Message to user if no Bud has been connected yet
+function noPlantsMessage() {
+    let noPlants = document.createElement("p")
+        let noPlantsTextBig = document.createTextNode("No plants have been added.")
+        let noPlantsText = document.createTextNode( "Click the button below to add a plant")
+        noPlants.appendChild(noPlantsText)
+        let noPlantsDiv = document.getElementById("no-plants")
+        noPlantsDiv.appendChild(noPlantsTextBig)
+        noPlantsDiv.appendChild(noPlantsText)
 }
 
-function meldingTemperatuur() {
-    if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
-    } else if (temperatuurSensor <= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
-        document.getElementById("temp").innerHTML = "Je plant bevriest zo wat!";
-    } else if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor >= maximaletemperatuur) {
-        document.getElementById("temp").innerHTML = "Het is veeel te warm voor je plant!";
-    } else document.getElementById("temp").innerHTML = "Voeg een plant toe";
-}
-
+// Data output for user
 function meldingen() {
-    meldingGrondvocht()
-    meldingTemperatuur()
+    let meldingGrondvocht = () => {
+        if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
+            console.log('alles gaat goed')
+        } else if (grondvochtSensor <= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
+            document.getElementById("vocht").innerHTML = "Je plant is aan het uitdrogen!";
+        } else if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor >= maximaleGrondvocht) {
+            document.getElementById("vocht").innerHTML = "Je plant is te nat!";
+        } else {
+        noPlantsMessage();
+            console.log('geen plant');
+        }
+    }
+    let meldingTemperatuur = () => {
+        if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
+            console.log('alles gaat goed')
+        } else if (temperatuurSensor <= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
+            document.getElementById("temp").innerHTML = "Je plant bevriest zo wat!";
+        } else if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor >= maximaletemperatuur) {
+            document.getElementById("temp").innerHTML = "Het is veeel te warm voor je plant!";
+        } else {
+            console.log('geen plant');
+        }
+    }
+    // let bud = () => {
+    //     let bud = document.createElement("h3")
+    //     let budName = document.createTextNode("Bud 1: ")
+    //     bud.appendChild(budName)
+    //     let budNameTitle = document.getElementById("sensor-bud")
+    //     budNameTitle.appendChild(budName)
+    // }
+    document.querySelector("#naam").innerHTML = plantvoorspelling
+    meldingGrondvocht();
+    meldingTemperatuur();
 }
-
 
 
 loadData()
+window.localStorage.clear();
