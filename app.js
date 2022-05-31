@@ -1,3 +1,4 @@
+// AI plant voorspelling
 let plantvoorspelling = window.localStorage.getItem("plant")
 console.log(plantvoorspelling)
 
