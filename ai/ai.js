@@ -84,5 +84,5 @@ function gotResults(error, results) {
 function passLabel(label) {
     let plantNaam = label;
     localStorage.setItem("plant", plantNaam)
-    window.location.href = "/sensor-test/index.html"
+    window.location.href = "/index.html"
 }
