@@ -4,7 +4,7 @@ let video;
 let label = "geenPlant";
 // The classifier
 let classifier;
-let modelURL = "https://teachablemachine.withgoogle.com/models/37NXtoFDI/";
+let modelURL = "https://teachablemachine.withgoogle.com/models/VdFvMP0WA/";
 
 let counter = 0
 
