@@ -1,7 +1,7 @@
 // The video
 let video;
 // For displaying the label
-let label = "geenPlant";
+let label = "";
 // The classifier
 let classifier;
 let modelURL = "https://teachablemachine.withgoogle.com/models/VdFvMP0WA/";
@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(640, 480);
+    createCanvas(1400, 375);
     // Create the video
     video = createCapture(VIDEO);
     video.hide();
@@ -32,7 +32,7 @@ function classifyVideo() {
 function draw() {
     background(0);
     // Draw the video
-    image(video, 0, 0);
+    image(video, 0, 0, 375, 812);
 
     // STEP 4: Draw the label
     textSize(32);
@@ -41,7 +41,7 @@ function draw() {
     text(label, width / 2, height - 16);
 
     // If statements to check labels
-    if (label == "geenPlant") {
+    if (label == "Geen Plant") {
         // Do nothing, keep classifying
     } else {
         counter++
