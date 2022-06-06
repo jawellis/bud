@@ -15,9 +15,16 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1400, 375);
+    createCanvas(1000, 1600);
     // Create the video
-    video = createCapture(VIDEO);
+    video = createCapture({
+        audio: false,
+        video: {
+          facingMode: {
+            exact: "environment"
+          } 
+        }
+      });
     video.hide();
     
     // STEP 2: Start classifying
@@ -32,7 +39,7 @@ function classifyVideo() {
 function draw() {
     background(0);
     // Draw the video
-    image(video, 0, 0, 375, 812);
+    image(video, 0, 0, 1500, 1600);
 
     // STEP 4: Draw the label
     textSize(32);
