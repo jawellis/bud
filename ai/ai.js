@@ -80,7 +80,7 @@ function gotResults(error, results) {
     // Store the label and classify again!
     label = results[0].label;
 
-    if (counter > 100) {
+    if (counter > 200) {
         console.log("stop")
         return;
     } else {
