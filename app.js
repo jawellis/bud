@@ -119,7 +119,7 @@ function meldingen() {
         } else if (grondvochtSensor <= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
             message = true
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
-            document.getElementById("vocht").innerHTML = "Je plant is te nat!";
+            document.getElementById("vocht").innerHTML = "Your soil is a bit too wet.";
             console.log("Je plant is te nat!")
         } else {
         noPlantsMessage()
@@ -140,7 +140,7 @@ function meldingen() {
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
             message = true
             document.getElementById("temp").innerHTML = "Het is veeel te warm voor je plant!";
-            console.log("Het is veeel te warm voor je plant!")
+            console.log("Het is veeel te warm voor je plant. Verplaats je plant naar een koelere plek.")
         } else {
             console.log('geen plant');           
         }
