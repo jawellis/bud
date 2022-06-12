@@ -114,12 +114,12 @@ function searchPlant(data) {
 // Message to user if no Bud has been connected yet
 function noPlantsMessage() {
         let noPlants = document.createElement("p")
-        let noPlantsTextBig = document.createTextNode("No plants have been added. ")
+        let noPlantsTextBig = document.createTextNode("Het lijkt erop dat je nog geen Bud hebt toegevoegd.")
         let noPlantsText = document.createTextNode( "Click the add button below to add a plant")
         noPlants.appendChild(noPlantsText)
         let noPlantsDiv = document.getElementById("no-plants")
         noPlantsDiv.appendChild(noPlantsTextBig)
-        noPlantsDiv.appendChild(noPlantsText)
+//         noPlantsDiv.appendChild(noPlantsText)
     }
 
 // link to pictures
