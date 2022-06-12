@@ -13,9 +13,7 @@
 <body>
     <!-- header with logo and nav buttons -->
     <header >
-      <h1 class="test-logo"> BUD </h1>
-      <nav >
-      </nav>
+      <img class="logo" src="./img/logobud2.png" />
     </header>
 
     <!-- main content -->
@@ -25,19 +23,29 @@
       <div id="no-plants"></div>
 
       <!-- Bud sensor -->
-      <div class="output">
-          <h3 id="sensor-bud"></h3>
-          <h3 id="naam"></h3> 
-          <!-- water data -->
+      <div class="output" id="output">
+        <section class="sensor-name">
+          <h1 id="sensor-bud"></h1>
+          <h1 id="naam"></h1> <br>
+        </section>
+
+        <a id="plant-link">plant check</a>
+
+          <!-- grondvocht data -->
+        <section class="notification">
+          <img src="./img/drop.png" alt="water drop icon" class="icons">
           <p id="vocht"></p>
-          <!-- temperature data -->
+          <!-- temperatuur data -->
+          <img src="./img/Thermometer_icon.png" alt="thermometer icon" class="icons">
           <p id="temp"></p>
+        </section>
       </div>
 
 
+
       <!-- add sensor button -->
-      <div>
-      <a href="/ai/ai.html" id="add-plant"> Add </a>
+      <div class="add-button">
+      <a href="/ai/ai.html" id="add-plant" > Toevoegen </a>
       </div>
 
     </main>
