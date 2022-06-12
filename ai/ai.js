@@ -45,7 +45,7 @@ function classifyVideo() {
 function draw() {
     background(0);
     // Draw the video
-    image(video, 0, 0);
+    image(video, 0, 0. 1000, 1600);
 
     // STEP 4: Draw the label
     textSize(32);
