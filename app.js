@@ -10,6 +10,8 @@ let grondvochtSensor
 // Temperatuur data
 let temperatuurSensor  
 // plant info array 
+// foto
+let foto
 let perfectePlantSituatie = []
 // minimale/maximale grondvocht waardes
 let minimaleGrondvocht
@@ -35,18 +37,22 @@ function showSensorData(data){
     temperatuurSensor = data.feeds[0].field1;
     luchtvochtSensor = data.feeds[0].field2;
     grondvochtSensor = data.feeds[0].field3;
+    foto = data.feeds[0].field4;
 
     console.log('Data van sensoren:')
     console.log(grondvochtSensor);
     console.log(temperatuurSensor);
     console.log(luchtvochtSensor);
+    console.log(foto);
     setTimeout(getSensorData, 10000);
     if (plantDataLoaded == false){
     loadPlantData()    
     }
 
     if (message == true) {
-        meldingen()
+        showOutput();
+        meldingen();
+        
     }
     
 }
@@ -73,6 +79,7 @@ function searchPlant(data) {
             console.log("gevonden waarden uit CSV:")
             console.log(plant.grondvocht)
             console.log(plant.temperatuur)
+            console.log(plant.foto)
 
             perfectePlantSituatie = [plant.grondvocht, plant.temperatuur]
             minimaleGrondvocht = perfectePlantSituatie[0] - 3
@@ -92,16 +99,43 @@ function searchPlant(data) {
     }
 }
 
+// add div
+
+// function createNewDiv(){
+//     var boxEle = document.createElement('div');
+//     var container = document.querySelector('.new-bud');
+//     boxEle.style.width = '100px';
+//     boxEle.style.height = '100px';
+//     boxEle.style.backgroundColor = '#f00';
+//     container.appendChild(boxEle);
+//     }
+
+
 // Message to user if no Bud has been connected yet
 function noPlantsMessage() {
         let noPlants = document.createElement("p")
         let noPlantsTextBig = document.createTextNode("No plants have been added. ")
-        let noPlantsText = document.createTextNode( "Click the button below to add a plant")
+        let noPlantsText = document.createTextNode( "Click the add button below to add a plant")
         noPlants.appendChild(noPlantsText)
         let noPlantsDiv = document.getElementById("no-plants")
         noPlantsDiv.appendChild(noPlantsTextBig)
         noPlantsDiv.appendChild(noPlantsText)
     }
+
+// link to pictures
+function showPic() {
+    let plantLink = document.getElementById("plant-link").setAttribute('href', foto)
+    // let plantLink = document.createTextNode("No plants have been added. ")
+    // noPlants.appendChild(noPlantsText)
+    // let noPlantsDiv = document.getElementById("no-plants")
+    // noPlantsDiv.appendChild(noPlantsTextBig)
+    // noPlantsDiv.appendChild(noPlantsText)
+}
+
+// function for style of message
+function showOutput(){
+    document.getElementById('output').style.display = "block"
+}
 
 
 // Data output for user
@@ -110,16 +144,17 @@ function meldingen() {
         if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
             message = true
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
+            document.getElementById("vocht").innerHTML = "De plant heeft voorlopig genoeg water";
             console.log('alles gaat goed')
         } else if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor >= maximaleGrondvocht) {
             message = true
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
-            document.getElementById("vocht").innerHTML = "Je plant is aan het uitdrogen!";
+            document.getElementById("vocht").innerHTML = "Je plant is aan het uitdrogen! Geef hem wat water.";
             console.log('je plant is aan het uitdrogen')
         } else if (grondvochtSensor <= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
             message = true
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
-            document.getElementById("vocht").innerHTML = "Your soil is a bit too wet.";
+            document.getElementById("vocht").innerHTML = "Je plant is iets te nat. Je hoeft het een tijdje geen water te geven.";
             console.log("Je plant is te nat!")
         } else {
         noPlantsMessage()
@@ -130,6 +165,7 @@ function meldingen() {
         if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
             message = true
+            document.getElementById("temp").innerHTML = "Dit is de juiste temperatuur voor de plant!";
             console.log('alles gaat goed')
         } else if (temperatuurSensor <= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
             message = true
@@ -139,14 +175,14 @@ function meldingen() {
         } else if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor >= maximaletemperatuur) {
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
             message = true
-            document.getElementById("temp").innerHTML = "Het is veeel te warm voor je plant!";
-            console.log("Het is veeel te warm voor je plant. Verplaats je plant naar een koelere plek.")
+            document.getElementById("temp").innerHTML = "Je plant heeft het te warm. Verplaats hem naar een koelere plek met wat meer schaduw.";
+            console.log("Het is veeel te warm voor je plant!")
         } else {
             console.log('geen plant');           
         }
     }
     document.querySelector("#naam").innerHTML = plantvoorspelling
-    // document.querySelector("#naam").element.style.color = red
+    showPic();
     console.log("grondvocht melding:")
     meldingGrondvocht();
     console.log('temperatuur melding:')
