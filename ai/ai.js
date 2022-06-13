@@ -17,18 +17,18 @@ function preload() {
 function setup() {
     createCanvas(1000, 1600);
     // Create the video (webcam
-    video = createCapture(VIDEO);
+//     video = createCapture(VIDEO);
 
     // phone from camer activate
    // Activate the back camera
-    // video =  createCapture({
-    //     audio: false,
-    //     video: {
-    //       facingMode: {
-    //         exact: "environment"
-    //       }
-    //     }
-    //   });
+    video =  createCapture({
+        audio: false,
+        video: {
+          facingMode: {
+            exact: "environment"
+          }
+        }
+      });
 
     video.hide();
     
