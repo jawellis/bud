@@ -144,7 +144,7 @@ function meldingen() {
         } else if (grondvochtSensor >= minimaleGrondvocht && grondvochtSensor >= maximaleGrondvocht) {
             message = true
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
-            document.getElementById("vocht").innerHTML = "Je plant is aan het uitdrogen! Geef hem wat water.";
+            document.getElementById("vocht").innerHTML = "De plant is een beetje aan het uidrogen. Geef hem wat water.";
             console.log('je plant is aan het uitdrogen')
         } else if (grondvochtSensor <= minimaleGrondvocht && grondvochtSensor <= maximaleGrondvocht) {
             message = true
@@ -160,17 +160,17 @@ function meldingen() {
         if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
             message = true
-            document.getElementById("temp").innerHTML = "Dit is de juiste temperatuur voor de plant!";
+            document.getElementById("temp").innerHTML = "Dit is een fijne temperatuur voor de plant.";
             console.log('alles gaat goed')
         } else if (temperatuurSensor <= minimaletemperatuur && temperatuurSensor <= maximaletemperatuur) {
             message = true
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
-            document.getElementById("temp").innerHTML = "Je plant bevriest zo wat!";
+            document.getElementById("temp").innerHTML = "Het is te koud voor je plant. Misschien kun je hem verplaatsen naar een warmeren plek.";
             console.log('Je plant bevriest zowat!')
         } else if (temperatuurSensor >= minimaletemperatuur && temperatuurSensor >= maximaletemperatuur) {
             document.querySelector("#sensor-bud").innerHTML = "Bud 1: "
             message = true
-            document.getElementById("temp").innerHTML = "Je plant heeft het te warm. Verplaats hem naar een koelere plek met wat meer schaduw.";
+            document.getElementById("temp").innerHTML = "Het is te warm voor je plant. Verplaats hem naar een koelere plek met wat meer schaduw.";
             console.log("Het is veeel te warm voor je plant!")
         } else {
             console.log('geen plant');           
