@@ -101,3 +101,7 @@ section.sensor-name {
     color: white;   
     text-align: center;
 }
+
+#plant-link {
+    display: none;
+}
