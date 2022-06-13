@@ -11,7 +11,7 @@ let grondvochtSensor
 let temperatuurSensor  
 // plant info array 
 // foto
-let foto
+// let foto
 let perfectePlantSituatie = []
 // minimale/maximale grondvocht waardes
 let minimaleGrondvocht
@@ -37,13 +37,13 @@ function showSensorData(data){
     temperatuurSensor = data.feeds[0].field1;
     luchtvochtSensor = data.feeds[0].field2;
     grondvochtSensor = data.feeds[0].field3;
-    foto = data.feeds[0].field4;
+//     foto = data.feeds[0].field4;
 
     console.log('Data van sensoren:')
     console.log(grondvochtSensor);
     console.log(temperatuurSensor);
     console.log(luchtvochtSensor);
-    console.log(foto);
+//     console.log(foto);
     setTimeout(getSensorData, 10000);
     if (plantDataLoaded == false){
     loadPlantData()    
@@ -79,7 +79,7 @@ function searchPlant(data) {
             console.log("gevonden waarden uit CSV:")
             console.log(plant.grondvocht)
             console.log(plant.temperatuur)
-            console.log(plant.foto)
+//             console.log(plant.foto)
 
             perfectePlantSituatie = [plant.grondvocht, plant.temperatuur]
             minimaleGrondvocht = perfectePlantSituatie[0] - 3
