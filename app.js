@@ -129,7 +129,7 @@ function showOutput(){
 
 // hide add button
 function hideButton(){
-    document.getElementById('add-plant').style.display = "none"
+    document.getElementById('add-button').style.display = "none"
 }
 
 
