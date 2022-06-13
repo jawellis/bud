@@ -1,7 +1,7 @@
 // The video
 let video;
 // For displaying the label
-let label = "geenPlant";
+let label = " ";
 // The classifier
 let classifier;
 let modelURL = "https://teachablemachine.withgoogle.com/models/VdFvMP0WA/";
@@ -54,7 +54,7 @@ function draw() {
     text(label, width / 2, height - 16);
 
     // If statements to check labels
-    if (label == "geenPlant") {
+    if (label == "Geen Plant") {
         // Do nothing, keep classifying
     } else {
         counter++
