@@ -52,7 +52,7 @@ function showSensorData(data){
     if (message == true) {
         showOutput();
         meldingen();
-        hideButton();
+        hideButton()
     }
     
 }
@@ -127,9 +127,9 @@ function showOutput(){
     document.getElementById('output').style.display = "block"
 }
 
-// hide add button
+// tijdelijke functie voor verstoppen knop
 function hideButton(){
-    document.getElementById('add-button').style.display = "hidden"
+    document.getElementById('add-plant').style.display = "none"
 }
 
 
