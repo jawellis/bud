@@ -86,7 +86,7 @@ section.sensor-name {
 }
 
 /* button to add first plant */
-.add-button {
+#add-button {
     display: flex;
     justify-content: center;
     
