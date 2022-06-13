@@ -15,11 +15,11 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1000, 1600);
+    createCanvas(1500, 1600);
     // Create the video (webcam
 //     video = createCapture(VIDEO);
 
-    // phone from camer activate
+    // phone camera activate
    // Activate the back camera
     video =  createCapture({
         audio: false,
@@ -58,7 +58,7 @@ function draw() {
         // Do nothing, keep classifying
     } else {
         counter++
-        if (counter == 150) {
+        if (counter == 200) {
             const plantText = document.createElement('p');
             plantText.innerHTML = `Ik weet zeker dat dit een ${label} is!`;
             document.body.appendChild(plantText);  
