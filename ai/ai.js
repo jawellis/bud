@@ -58,7 +58,7 @@ function draw() {
         // Do nothing, keep classifying
     } else {
         counter++
-        if (counter == 100) {
+        if (counter == 150) {
             const plantText = document.createElement('p');
             plantText.innerHTML = `Ik weet zeker dat dit een ${label} is!`;
             document.body.appendChild(plantText);  
@@ -86,7 +86,7 @@ function gotResults(error, results) {
     // Store the label and classify again!
     label = results[0].label;
 
-    if (counter > 100) {
+    if (counter > 200) {
         console.log("stop")
         return;
     } else {
