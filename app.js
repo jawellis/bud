@@ -52,7 +52,7 @@ function showSensorData(data){
     if (message == true) {
         showOutput();
         meldingen();
-        
+        hideButton();
     }
     
 }
@@ -178,7 +178,6 @@ function meldingen() {
     }
     document.querySelector("#naam").innerHTML = plantvoorspelling
     showPic()
-    hideButton()
     console.log("grondvocht melding:")
     meldingGrondvocht();
     console.log('temperatuur melding:')
