@@ -127,6 +127,11 @@ function showOutput(){
     document.getElementById('output').style.display = "block"
 }
 
+// hide add button
+function hideButton(){
+    document.getElementById('add-plant').style.display = "none"
+}
+
 
 // Data output for user
 function meldingen() {
@@ -172,7 +177,8 @@ function meldingen() {
         }
     }
     document.querySelector("#naam").innerHTML = plantvoorspelling
-    showPic();
+    showPic()
+    hideButton()
     console.log("grondvocht melding:")
     meldingGrondvocht();
     console.log('temperatuur melding:')
